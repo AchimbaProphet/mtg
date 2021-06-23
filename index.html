@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Do you play Magic?</title>
+        <meta name="description" content="A progressive web app for tracking life points while playing Magic the Gathering (MtG). To be used as a life counter for duel, Commander, two-headed giant, teams, pentagram, emperor, free-for-all, and any other MtG game types.">
+        <meta name="generator" content="Mitch Dombrausky's brain">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+        <meta name="google" content="notranslate">
+        <meta name="google-site-verification" content="l3UF5kWc93ZPWYqXFbQfsdmnPphHOhdKaJNiTYNRvNs">
+        <meta name="theme-color" content="#000000">
+        <meta name="msapplication-config" content="browserconfig.xml">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="msapplication-TileImage" content="img/mstile-144x144.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Mitch's MtG Life Counter">
+        <link rel="manifest" type="application/manifest+json" href="site.webmanifest">
+        <link rel="stylesheet" type="text/css" href="counter.css">
+        <link rel="apple-touch-startup-image" href="img/touch-icon-192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="192x192" href="img/touch-icon-192.png">
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="img/touch-icon-180.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/touch-icon-152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/touch-icon-120.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch-icon-114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="96x96" href="img/touch-icon-96.png">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/touch-icon-76.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/touch-icon-60.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/touch-icon-57.png">
+        <link rel="apple-touch-icon-precomposed" sizes="48x48" href="img/touch-icon-48.png">
+        <link rel="apple-touch-icon-precomposed" sizes="36x36" href="img/touch-icon-36.png">
+        <link rel="apple-touch-icon-precomposed" sizes="32x32" href="img/touch-icon-32.png">
+        <link rel="apple-touch-icon-precomposed" sizes="16x16" href="img/touch-icon-16.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch-icon-57.png">
+        <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#000000">
+        <link rel="icon" type="image/png" sizes="144x144" href="img/touch-icon-144.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/touch-icon-96.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    </head>
+    <body class="body noselect">
+        <!-- side menu which slides open from the left -->
+        <div id="mask" class="mask hidden"></div>
+        <div id="menu" class="menu">
+            <div class="menu-scroll">
+                <div class="head menu-head"></div>
+                <input id="restart" type="button" class="menu-button" title="Start a new game. Select the number of players and the initial life total" value="New Game" />
+                <input id="replay" type="button" class="menu-button" title="Replay the last game with the same number of players and initial life total" value="Replay" />
+                <input id="more" type="button" class="menu-button" title="Options: toggle fullscreen mode, Select a random player, and start game timer" value="Options" />
+                <div id="extra_buttons">
+                    <div class="menu-divider"></div>
+                    <a class="menu-button" href="https://media.wizards.com/2021/downloads/MagicCompRules%2020210609.pdf" target="_blank" rel="nofollow noopener" title="Magic the Gathering rules! There are also rules to play the game">Rules</a>
+                    <a class="menu-button" href="https://gatherer.wizards.com/Pages/Advanced.aspx" target="_blank" rel="nofollow noopener" title="Magic Card Database Advanced Search">Card Search</a>
+                    <a class="menu-button" href="https://www.cardmarket.com/en/Magic" target="_blank" rel="nofollow noopener" title="Purchase cards on cardmarket.com">Cardmarket</a>
+                    <a class="menu-button" href="mailto:achimba@hotmail.com?subject=MtG%20Counter%20Feedback" target="_blank" title="Contact us">Contact</a>
+                </div>
+                <div class="credits">
+                    ©2019-2021 Mitch Dombrausky Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
+                </div>
+            </div>
+        </div>
+        <!-- first screen panel to select the number of players and the initial life total -->
+        <div id="panel" class="panel">
+            <div id="choose" class="choose" data-slideout-ignore="true">
+                <div class="head"></div>
+                <div class="label">Life Total</div>
+                <select id="start_life" class="start-life" title="Select the number of life points for this game">
+                    <option value="100">100</option>
+                    <option value="80">80</option>
+                    <option value="60">60</option>
+                    <option value="50">50</option>
+                    <option value="40">40</option>
+                    <option value="30">30</option>
+                    <option value="20" selected>20</option>
+                </select>
+                <div class="label">Number of Players</div>
+                <div class="button-row-top">
+                    <input type="button" class="fancy-button player-button" value="2" title="Two players" />
+                </div>
+                <div class="button-table">
+                    <div class="button-row">
+                        <div class="button-column1">
+                            <input type="button" class="fancy-button player-button" value="3" title="Three players" />
+                        </div>
+                        <div class="button-column2">
+                            <input type="button" class="fancy-button player-button" value="4" title="Four players" />
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="button-column1">
+                            <input type="button" class="fancy-button player-button" value="5" title="Five players" />
+                        </div>
+                        <div class="button-column2">
+                            <input type="button" class="fancy-button player-button" value="6" title="Six players" />
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <div class="button-column1">
+                            <input type="button" class="fancy-button player-button" value="7" title="Seven players" />
+                        </div>
+                        <div class="button-column2">
+                            <input type="button" class="fancy-button player-button" value="8" title="Eight players" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- second screen panel where the life total buttons are displayed while the game is being played -->
+            <div id="play" class="play hidden">
+                <div id="time_container" class="time-container hidden">
+                    <button id="time_reset" class="time-reset">&circlearrowright;</button>
+                    <span id="time" class="time">00:00:00</span>
+                    <button id="time_close" class="time-close">&times;</button>
+                </div>
+                <div id="tile1" class="tile c1 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="1" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="1" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="1" />
+                    </div>
+                </div>
+                <div id="tile2" class="tile c2 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="2" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="2" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="2" />
+                    </div>
+                </div>
+                <div id="tile3" class="tile c3 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="3" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="3" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="3" />
+                    </div>
+                </div>
+                <div id="tile4" class="tile c4 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="4" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="4" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="4" />
+                    </div>
+                </div>
+                <div id="tile5" class="tile c5 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="5" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="5" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="5" />
+                    </div>
+                </div>
+                <div id="tile6" class="tile c6 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="6" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="6" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="6" />
+                    </div>
+                </div>
+                <div id="tile7" class="tile c7 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="7" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="7" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="7" />
+                    </div>
+                </div>
+                <div id="tile8" class="tile c8 hidden">
+                    <div class="life"></div>
+                    <div class="buttons">
+                        <input type="button" class="plus" value="+" title="Add 1 life" data-player="8" />
+                        <input type="button" class="minus" value="-" title="Subtract 1 life" data-player="8" />
+                        <input type="button" class="animate hidden" title="Animate Dead" value=" " data-player="8" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- dialog to display the randomly selected player -->
+        <div id="starting_player" class="dialog starting-player hidden">
+            <div id="starting_player_text" class="starting-player-text"></div>
+            <input id="starting_player_button" type="button" class="fancy-button starting-player-button" value="OK" title="OK" />
+        </div>
+        <!-- color picker dialog -->
+        <div id="colorpicker" class="dialog colorpicker hidden">
+            <input id="colorpicker_close" type="button" class="dialog-close" title="Close this menu" value="X" />
+        </div>
+        <!-- options dialog -->
+        <div id="more_commands" class="dialog more-commands hidden">
+            <input id="more_commands_close" type="button" class="dialog-close" title="Close this menu" value="X" />
+            <input id="fullscreen" type="button" class="fancy-button more-commands-button" title="Toggle fullscreen mode" value="Toggle Fullscreen" />
+            <input id="random_player" type="button" class="fancy-button more-commands-button" title="Select a random player to begin the game" value="Select Random Player" />
+            <input id="show_timer" type="button" class="fancy-button more-commands-button hidden" title="Start the game timer" value="Start Game Timer" />
+            <input id="hide_timer" type="button" class="fancy-button more-commands-button hidden" title="Close the game timer" value="Close Game Timer" />
+		</div>
+        <!-- script includes -->
+        <script src="hammer.2.0.8.min.js"></script>
+        <script src="slideout.min.js"></script>
+        <script src="counter.js"></script>
+    </body>
+</html>

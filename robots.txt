@@ -1,0 +1,3 @@
+user-agent: *
+allow: /mtg/
+sitemap: https://achimba.freecluster.eu/mtg/sitemap.xml

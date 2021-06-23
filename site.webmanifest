@@ -1,0 +1,18 @@
+{
+  "start_url": "https://achimba.freecluster.eu/mtg/index.html?standalone",
+  "scope": "/mtg/",
+  "name": "Mitch's MtG Life Counter",
+  "short_name": "Life Counter",
+  "description": "App for tracking life points while playing Magic the Gathering (MtG)",
+  "icons": [{
+    "sizes": "192x192",
+    "src": "https://achimba.freecluster.eu/mtg/img/android-chrome-192x192.png",
+    "type": "image/png"
+  }],
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "en-US",
+  "dir": "ltr",
+  "display": "fullscreen",
+  "orientation": "any"
+}

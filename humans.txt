@@ -1,0 +1,14 @@
+/* TEAM */
+
+Achimba a.k.a. AchimbaProphet a.k.a. mitchy mitch
+
+/* THANKS */
+
+Mitch Dombrausky
+Your Mom lol
+
+/* SITE */
+
+Standards: HTML5, CSS3, Javascript, Service Workers
+Components: HTML5 Boilerplate, Hammer.js, slideout.js
+Software: VS19, Notepad++
